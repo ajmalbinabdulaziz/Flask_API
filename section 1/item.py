@@ -41,7 +41,7 @@ class Item(Resource):
         try:
             self.insert(item)
         except:
-            return {'message': "An error occurred while inserting the item"}, 500 #Internal Server Error
+            return {'message': "An error occurred while inserting the item"}, 500
 
         return item, 201
 
@@ -122,5 +122,3 @@ class ItemList(Resource):
 
         return {'items': items}
        
-        
-        
