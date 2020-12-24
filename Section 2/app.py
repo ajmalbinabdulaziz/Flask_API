@@ -7,9 +7,16 @@ from resources.user import UserRegister
 from resources.item import Item, ItemList
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  #at root folder, it doesn't have to be sqlite, it could be mysql, prosgresql, oracle, etc.
 app.secret_key = 'ajmal'
 api = Api(app)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+
 
 jwt = JWT(app, authenticate, identity)
 

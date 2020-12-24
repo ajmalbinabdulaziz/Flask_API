@@ -1,7 +1,6 @@
 from models.user import UserModel
 from werkzeug.security import safe_str_cmp
 
-users = [UserModel(1, 'ajmal', 'abcd')]
     
 
 def authenticate(username, password):
